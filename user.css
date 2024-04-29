@@ -1,0 +1,56 @@
+/* Estilos para o corpo do documento */
+body {
+    font-family: Arial, sans-serif; /* Usando a fonte Arial como padrão */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o contêiner principal */
+.container {
+    max-width: 800px; /* Largura máxima do contêiner */
+    margin: 0 auto; /* Centralizar o contêiner horizontalmente */
+    padding: 20px;
+}
+
+/* Estilos para cabeçalhos h1 e h2 */
+h1, h2 {
+    color: #333; /* Cor do texto */
+}
+
+/* Estilos para a seção de informações do cartão */
+#cartao-info {
+    margin-top: 20px; /* Margem superior para espaçamento */
+}
+
+/* Estilos para rótulos */
+label {
+    display: block; /* Exibição em bloco para facilitar o alinhamento */
+    margin-bottom: 5px; /* Margem inferior para espaçamento */
+}
+
+/* Estilos para campos de entrada de texto */
+input[type="text"] {
+    width: 100%; /* Largura total */
+    padding: 8px; /* Espaçamento interno */
+    margin-bottom: 10px; /* Margem inferior para espaçamento */
+    box-sizing: border-box; /* Considerar o padding e a borda no cálculo da largura */
+}
+
+/* Estilos para botões */
+button {
+    padding: 10px 20px; /* Espaçamento interno */
+    background-color: #007bff; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    border: none; /* Sem borda */
+    cursor: pointer; /* Cursor do mouse */
+}
+
+/* Estilos para o estado hover dos botões */
+button:hover {
+    background-color: #0056b3; /* Cor de fundo quando hover */
+}
+
+/* Estilos para parágrafos */
+p {
+    margin: 5px 0; /* Margem superior e inferior para espaçamento */
+}

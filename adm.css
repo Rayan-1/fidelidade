@@ -1,0 +1,52 @@
+/* Definindo estilos básicos para o corpo do documento */
+body {
+    font-family: Arial, sans-serif; /* Usando a fonte Arial como padrão */
+    background-color: #f0f0f0; /* Cor de fundo suave */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o contêiner principal */
+.container {
+    max-width: 800px; /* Largura máxima do contêiner */
+    margin: 20px auto; /* Centralizar o contêiner horizontalmente */
+    padding: 20px;
+    background-color: #fff; /* Fundo branco */
+    border-radius: 5px; /* Borda arredondada */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilos para cabeçalhos h1 e h2 */
+h1, h2 {
+    color: #333; /* Cor do texto */
+}
+
+/* Estilos para o cartão de fidelidade */
+#cartao-fidelidade {
+    display: flex; /* Exibir os elementos em linha */
+    margin-bottom: 20px; /* Margem inferior para espaçamento */
+}
+
+/* Estilos para o elemento de "corte" */
+.corte {
+    width: 50px;
+    height: 50px;
+    background-color: #333; /* Cor de fundo para o "corte" */
+    margin-right: 5px; /* Margem direita para espaçamento entre os cortes */
+}
+
+/* Estilos para o formulário de solicitação de corte */
+#solicitar-corte-form {
+    display: none; /* Esconder o formulário inicialmente */
+}
+
+/* Estilos para o botão de solicitar corte */
+#btn-solicitar-corte {
+    margin-bottom: 20px; /* Margem inferior para espaçamento */
+}
+
+/* Estilos para o "corte" gratuito */
+.corte-gratis {
+    background-color: #ffcccc; /* Cor de fundo para o "corte" gratuito */
+    font-weight: bold; /* Texto em negrito para destacar */
+}
