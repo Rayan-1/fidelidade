@@ -1,23 +1,40 @@
+// create_user.js
 document.addEventListener('DOMContentLoaded', function() {
     const createUserForm = document.getElementById('create-user-form');
 
     createUserForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
 
-        // Obter os dados do formulário
+        // Captura os dados inseridos pelo usuário
         const username = document.getElementById('username').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        // Aqui você pode enviar os dados do usuário para o servidor para criar a conta
-        // Após criar a conta, você pode redirecionar o usuário para a tela de login
-        // Neste exemplo, apenas imprimiremos os dados do usuário no console
-        console.log('Novo usuário criado:');
-        console.log('Nome de Usuário:', username);
-        console.log('E-mail:', email);
-        console.log('Senha:', password);
+        // Valida os dados do formulário (opcional)
 
-        // Redirecionar para a tela de login
-        window.location.href = 'login.html';
+        // Cria um objeto com os dados do usuário
+        const newUser = {
+            username: username,
+            email: email,
+            password: password
+        };
+
+        // Salva os dados do novo usuário em algum lugar (ex: localStorage)
+        saveUser(newUser);
+
+        // Redireciona para a tela de login ou exibe uma mensagem de confirmação
+        window.location.href = 'login.html'; // Redireciona para a página de login
     });
+
+    // Função para salvar os dados do usuário (exemplo usando localStorage)
+    function saveUser(user) {
+        // Obtém os usuários existentes do localStorage ou inicializa uma lista vazia
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Adiciona o novo usuário à lista de usuários
+        users.push(user);
+
+        // Salva a lista atualizada de usuários de volta no localStorage
+        localStorage.setItem('users', JSON.stringify(users));
+    }
 });
