@@ -15,5 +15,14 @@
     </div>
 
     <script src="adm.js"></script>
+    <script>
+        // Verificar se o usuário está autenticado
+        const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
+
+        // Se não estiver autenticado, redirecionar para a página de login
+        if (!usuarioAutenticado) {
+            window.location.href = 'login.html';
+        }
+    </script>
 </body>
 </html>
