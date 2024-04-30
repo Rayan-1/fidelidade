@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif; /* Usando a fonte Arial como padrão */
     margin: 0;
     padding: 0;
+    background-color: #000000; 
 }
 
 /* Estilos para o contêiner principal */
@@ -14,7 +15,7 @@ body {
 
 /* Estilos para cabeçalhos h1 e h2 */
 h1, h2 {
-    color: #333; /* Cor do texto */
+    color: #fff9f9; /* Cor do texto */
 }
 
 /* Estilos para a seção de informações do cartão */
