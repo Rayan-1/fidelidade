@@ -1,18 +1,31 @@
+/* Estilo para o container principal */
+/* Estilos para o corpo do documento */
+body {
+    font-family: Arial, sans-serif; /* Usando a fonte Arial como padrão */
+    margin: 0;
+    padding: 0;
+    background-color: #000000; 
+}
+
+
 .container {
     max-width: 800px;
     margin: 50px auto;
     text-align: center;
 }
 
+/* Estilo para o título principal */
 h1 {
-    color: #333;
+    color: #f3eeee;
 }
 
+/* Estilo para a lista de cartões */
 .cartoes {
     list-style-type: none;
     padding: 0;
 }
 
+/* Estilo para cada cartão individual */
 .cartao {
     display: inline-block;
     width: 150px;
@@ -24,23 +37,39 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilo para a seção de acertos */
 .acertos {
     margin-top: 20px;
 }
 
+/* Estilo para cada ícone de acerto */
 .acerto {
     display: inline-block;
     width: 30px;
     height: 30px;
     background-color: #0e140e;
     border-radius: 50%;
-    margin: 5px;
+    margin: 0px 5px -10px 5px;
     font-size: 20px;
     color: #fff;
     line-height: 30px;
     cursor: pointer; /* Adicionado cursor pointer para indicar que é clicável */
 }
 
+/* Estilo quando o ícone de acerto está preenchido */
 .acerto.preenchido {
     background-color: #2e7d32; /* Cor alterada para indicar que o acerto foi marcado */
 }
+
+/* Estilo para a mensagem do próximo corte grátis */
+.mensagem-cartao {
+    color: green; /* Cor verde */
+    font-weight: bold; /* Negrito */
+}
+
+.btn-excluir {
+    border-radius: 20px; /* Define a borda do botão como mais arredondada */
+    padding: 10px 20px; /* Aumenta o tamanho do botão */
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+}
+
