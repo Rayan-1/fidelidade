@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Obter o nome pesquisado em minúsculas
         const nomePesquisado = inputNome.value.trim().toLowerCase();
 
-        // Obter os dados do cartão do armazenamento
-        const cartoes = JSON.parse(localStorage.getItem('cartoesFidelidade')) || [];
+        // Obter os dados dos cartões de fidelidade do localStorage
+        const cartoesFidelidade = JSON.parse(localStorage.getItem('cartoesFidelidade')) || [];
 
         // Procurar os cartões que correspondem ao nome pesquisado
-        const cartoesEncontrados = cartoes.filter(cartao => {
+        const cartoesEncontrados = cartoesFidelidade.filter(cartao => {
             // Obter o primeiro nome do cartão em minúsculas
             const primeiroNomeCartao = cartao.nome.split(' ')[0].toLowerCase();
             // Verificar se o primeiro nome do cartão começa com a letra pesquisada
@@ -39,15 +39,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Adicionar a imagem ao cartão
                 cartaoItem.appendChild(fotoCliente);
                 
-                // Criar parágrafos para exibir as informações do cartão
+                // Criar parágrafo para exibir o nome do cliente
                 const nomeParagrafo = document.createElement('p');
                 nomeParagrafo.textContent = `Nome: ${cartao.nome}`;
-                const carimbosParagrafo = document.createElement('p');
-                carimbosParagrafo.textContent = `Carimbos: ${cartao.carimbos}`;
-                // Adicionar os parágrafos ao cartão
+                // Adicionar o parágrafo ao cartão
                 cartaoItem.appendChild(nomeParagrafo);
-                cartaoItem.appendChild(carimbosParagrafo);
                 
+                // Adicionar div para os acertos
+                const divAcertos = document.createElement('div');
+                divAcertos.classList.add('acertos'); // Adicionar classe para estilização CSS
+                // Adicionar a div ao item do cartão
+                cartaoItem.appendChild(divAcertos);
+
+                // Contar o número de acertos (ícones preenchidos)
+                let acertos = cartao.acertos || 0;
+
+                // Adicionar ícones de acerto para marcar os acertos no cartão de fidelidade
+                for (let i = 0; i < 5; i++) {
+                    const iconeAcerto = document.createElement('span');
+                    iconeAcerto.classList.add('acerto'); // Adicionar classe para estilização CSS
+                    if (i < acertos) {
+                        iconeAcerto.classList.add('preenchido'); // Adicionar classe para indicar que está marcado
+                    }
+                    // Adicionar o ícone à div de acertos
+                    divAcertos.appendChild(iconeAcerto);
+                }
+
                 // Adicionar o cartão à lista de informações de cartões
                 cartaoInfo.appendChild(cartaoItem);
             });

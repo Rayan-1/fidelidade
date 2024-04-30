@@ -42,12 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Salva a lista atualizada de cartões de fidelidade no armazenamento local
                 localStorage.setItem('cartoesFidelidade', JSON.stringify(cartoesFidelidade));
-
+                 // Exibir mensagem na tela
+                alert('Cartão criado com sucesso!');   
                 // Redirecionar para a página de cartão
-                window.location.href = 'cartao.html';
+                window.location.href = 'index.html';
 
-                // Exibir mensagem na tela
-                alert('Cartão criado com sucesso!');
 
             };
 
