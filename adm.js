@@ -53,10 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let i = 0; i < 5; i++) {
                 const iconeAcerto = document.createElement('span');
                 iconeAcerto.classList.add('acerto'); // Adicionar classe para estilização CSS
-                if (i < cartao.acertos) {
+                if (cartao.registro && cartao.registro[i]) {
                     iconeAcerto.classList.add('preenchido'); // Adicionar classe para indicar que está marcado
                     acertos++;
-                    getDataHoraAtual() // Incrementar o número de acertos
                 }
                 iconeAcerto.addEventListener('click', function() {
                     if (!iconeAcerto.classList.contains('preenchido')) {
@@ -67,6 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             mensagemCartao.textContent = `Você ganhou um corte grátis! (${dataHora})`;
                         }
                         // Registrar a data e hora em que o ícone foi preenchido
+                        if (!cartao.registro) {
+                            cartao.registro = [];
+                        }
                         cartao.registro[i] = getDataHoraAtual();
                     } else {
                         iconeAcerto.classList.remove('preenchido'); // Remover a classe de preenchido ao desmarcar
