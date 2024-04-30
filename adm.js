@@ -1,12 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     const listaCartoes = document.getElementById('lista-cartoes');
+    let contadorVerdeTotal = 0; // Variável para contar o número total de ícones marcados com verde
 
     // Função para obter a data e hora atual
     function getDataHoraAtual() {
         const dataHora = new Date();
-        const dataFormatada = dataHora.toLocaleDateString();
-        const horaFormatada = dataHora.toLocaleTimeString();
-        return `${dataFormatada} ${horaFormatada}`;
+        return dataHora.toLocaleString(); // Retornar data e hora formatadas
+    }
+
+    // Função para atualizar o contador de ícones verdes
+    function atualizarContadorVerde() {
+        contadorVerdeTotal = document.querySelectorAll('.acerto.preenchido').length;
+        console.log(`Número de Cortes Realizados: ${contadorVerdeTotal}`);
     }
 
     // Função para exibir os cartões na lista do administrador
@@ -50,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 iconeAcerto.classList.add('acerto'); // Adicionar classe para estilização CSS
                 if (i < cartao.acertos) {
                     iconeAcerto.classList.add('preenchido'); // Adicionar classe para indicar que está marcado
-                    acertos++; // Incrementar o número de acertos
+                    acertos++;
+                    getDataHoraAtual() // Incrementar o número de acertos
                 }
                 iconeAcerto.addEventListener('click', function() {
                     if (!iconeAcerto.classList.contains('preenchido')) {
@@ -60,11 +66,23 @@ document.addEventListener('DOMContentLoaded', function() {
                             const dataHora = getDataHoraAtual(); // Obter a data e hora atuais
                             mensagemCartao.textContent = `Você ganhou um corte grátis! (${dataHora})`;
                         }
+                        // Registrar a data e hora em que o ícone foi preenchido
+                        cartao.registro[i] = getDataHoraAtual();
                     } else {
                         iconeAcerto.classList.remove('preenchido'); // Remover a classe de preenchido ao desmarcar
                         acertos--; // Decrementar o número de acertos
                         mensagemCartao.textContent = ''; // Limpar a mensagem do cartão
+                        // Remover a data e hora do registro quando o ícone é desmarcado
+                        cartao.registro[i] = null;
                     }
+
+                    // Atualizar os acertos do cartão de fidelidade
+                    cartao.acertos = acertos;
+
+                    // Salvar os dados atualizados no localStorage
+                    localStorage.setItem('cartoesFidelidade', JSON.stringify(cartoesFidelidade));
+
+                    atualizarContadorVerde(); // Atualizar o contador de ícones verdes
                 });
                 divAcertos.appendChild(iconeAcerto); // Adicionar o ícone à div de acertos
             }
@@ -92,6 +110,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Adicionar o elemento de lista à lista de cartões
             listaCartoes.appendChild(itemLista);
         });
+
+        // Mostrar o número total de ícones marcados com verde
+        console.log(`Número de Cortes Realizados: ${contadorVerdeTotal}`);
     }
 
     // Chamada inicial para exibir os cartões na lista do administrador
