@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const nomePesquisado = inputNome.value.trim().toLowerCase();
 
         // Obter os dados dos cartões de fidelidade do localStorage
-        const cartoesFidelidade = JSON.parse(localStorage.getItem('cartoesFidelidade')) || [];
+        let cartoesFidelidade = JSON.parse(localStorage.getItem('cartoesFidelidade')) || [];
 
         // Procurar os cartões que correspondem ao nome pesquisado
         const cartoesEncontrados = cartoesFidelidade.filter(cartao => {
