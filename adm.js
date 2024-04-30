@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         acertos++; // Incrementar o número de acertos
                         if (acertos === 5) {
                             const dataHora = getDataHoraAtual(); // Obter a data e hora atuais
-                            mensagemCartao.textContent = `Você ganhou um corte grátis! (${dataHora})`;
+                            mensagemCartao.textContent = `Próximo corte é grátis! (${dataHora})`;
+                            mensagemCartao.style.color = 'black'; // Definir a cor do texto como verde
+                            mensagemCartao.style.fontWeight = 'bold'; // Definir o peso da fonte como negrito
                         }
                         // Registrar a data e hora em que o ícone foi preenchido
                         if (!Array.isArray(cartao.registro)) {
