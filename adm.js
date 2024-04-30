@@ -1,4 +1,3 @@
-// adm.js (JavaScript do administrador)
 document.addEventListener('DOMContentLoaded', function() {
     const listaCartoes = document.getElementById('lista-cartoes');
 
@@ -8,64 +7,63 @@ document.addEventListener('DOMContentLoaded', function() {
         listaCartoes.innerHTML = '';
 
         // Obter os cartões de fidelidade do localStorage ou inicializar uma lista vazia
-        const cartoesFidelidade = JSON.parse(localStorage.getItem('cartoesFidelidade')) || [];
+        let cartoesFidelidade = JSON.parse(localStorage.getItem('cartoesFidelidade')) || [];
 
         // Iterar sobre cada cartão de fidelidade para criar elementos HTML correspondentes
         cartoesFidelidade.forEach((cartao, index) => {
             // Criar um elemento de lista para cada cartão de fidelidade
             const itemLista = document.createElement('li');
+            itemLista.classList.add('cartao'); // Adicionar classe para estilização CSS
+            itemLista.dataset.index = index; // Adicionar dataset com o índice do cartão
 
             // Criar um elemento de imagem para exibir a foto do cliente
             const fotoCliente = document.createElement('img');
             fotoCliente.src = cartao.foto; // Definir a origem da imagem como a URL da foto
             fotoCliente.alt = 'Foto do cliente'; // Definir um texto alternativo para acessibilidade
-            fotoCliente.style.width = '100px'; // Definir a largura da foto para 150px (tamanho de uma foto de perfil)
-            fotoCliente.style.height = 'auto'; // Definir a altura da foto para 112px (aspect ratio de 4x3)
-            itemLista.appendChild(fotoCliente); // Adicionar a imagem ao item da lista
+            fotoCliente.style.width = '100px'; // Definir a largura da foto
+            itemLista.appendChild(fotoCliente); // Adicionar a foto ao item da lista
 
-            // Adicionar texto com os detalhes do cartão de fidelidade (nome e número de carimbos)
-            const textoDetalhes = document.createElement('span');
-            textoDetalhes.textContent = `Nome: ${cartao.nome} - Carimbos: ${cartao.carimbos}`;
-            itemLista.appendChild(textoDetalhes); // Adicionar o texto ao item da lista
+            // Adicionar o nome do cliente ao cartão
+            const nomeCliente = document.createElement('p');
+            nomeCliente.textContent = cartao.nome; // Adicionar o nome do cliente
+            itemLista.appendChild(nomeCliente); // Adicionar o nome ao item da lista
 
-            // Verificar se o cartão de fidelidade possui 5 ou mais carimbos
-            if (cartao.carimbos >= 5) {
-                // Se o cartão tiver 5 ou mais carimbos, exibir "Gratuito" em verde
-                const textoGratuito = document.createElement('span');
-                textoGratuito.textContent = ' - Gratuito';
-                textoGratuito.style.color = 'green';
-                itemLista.appendChild(textoGratuito); // Adicionar o texto ao item da lista
+            // Adicionar div para os acertos
+            const divAcertos = document.createElement('div');
+            divAcertos.classList.add('acertos'); // Adicionar classe para estilização CSS
+            itemLista.appendChild(divAcertos); // Adicionar a div ao item da lista
 
-                // Adicionar botão para zerar os carimbos
-                const btnZerarCarimbos = document.createElement('button');
-                btnZerarCarimbos.textContent = 'Zerar Carimbos';
-                btnZerarCarimbos.addEventListener('click', function() {
-                    // Zerar os carimbos do cartão de fidelidade
-                    cartao.carimbos = 0;
+            // Variável para contar os acertos
+            let acertos = 0;
 
-                    // Atualizar a lista de cartões de fidelidade
-                    exibirCartoes();
-
-                    // Atualizar os dados salvos no localStorage
-                    localStorage.setItem('cartoesFidelidade', JSON.stringify(cartoesFidelidade));
+            // Adicionar ícones de acerto para marcar os acertos no cartão de fidelidade
+            for (let i = 0; i < 5; i++) {
+                const iconeAcerto = document.createElement('span');
+                iconeAcerto.classList.add('acerto'); // Adicionar classe para estilização CSS
+                if (i < cartao.acertos) {
+                    iconeAcerto.classList.add('preenchido'); // Adicionar classe para indicar que está marcado
+                    acertos++; // Incrementar o número de acertos
+                }
+                iconeAcerto.addEventListener('click', function() {
+                    if (!iconeAcerto.classList.contains('preenchido')) {
+                        iconeAcerto.classList.add('preenchido'); // Adicionar a classe de preenchido ao clicar
+                        acertos++; // Incrementar o número de acertos
+                        if (acertos === 5) {
+                            mensagemCartao.textContent = 'Você ganhou um corte grátis!';
+                        }
+                    } else {
+                        iconeAcerto.classList.remove('preenchido'); // Remover a classe de preenchido ao desmarcar
+                        acertos--; // Decrementar o número de acertos
+                        mensagemCartao.textContent = ''; // Limpar a mensagem do cartão
+                    }
                 });
-                itemLista.appendChild(btnZerarCarimbos); // Adicionar o botão ao item da lista
-            } else {
-                // Se o cartão de fidelidade tiver menos de 5 carimbos, adicionar botão para marcar carimbo
-                const btnMarcarCarimbo = document.createElement('button');
-                btnMarcarCarimbo.textContent = 'Marcar Carimbo';
-                btnMarcarCarimbo.addEventListener('click', function() {
-                    // Incrementar o número de carimbos do cartão de fidelidade
-                    cartao.carimbos++;
-
-                    // Atualizar a lista de cartões de fidelidade
-                    exibirCartoes();
-
-                    // Atualizar os dados salvos no localStorage
-                    localStorage.setItem('cartoesFidelidade', JSON.stringify(cartoesFidelidade));
-                });
-                itemLista.appendChild(btnMarcarCarimbo); // Adicionar o botão ao item da lista
+                divAcertos.appendChild(iconeAcerto); // Adicionar o ícone à div de acertos
             }
+
+            // Adicionar mensagem para exibir corte grátis
+            const mensagemCartao = document.createElement('p');
+            mensagemCartao.classList.add('mensagem-cartao');
+            itemLista.appendChild(mensagemCartao); // Adicionar a mensagem ao item da lista
 
             // Adicionar botão para excluir o cartão
             const btnExcluirCartao = document.createElement('button');

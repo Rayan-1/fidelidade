@@ -9,20 +9,11 @@
 <body>
     <div class="container">
         <h1>Lista de Cartões de Fidelidade</h1>
-        <ul id="lista-cartoes">
+        <ul id="lista-cartoes" class="cartoes">
             <!-- Aqui os cartões serão inseridos dinamicamente pelo JavaScript -->
         </ul>
     </div>
 
     <script src="adm.js"></script>
-    <script>
-        // Verificar se o usuário está autenticado
-        const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
-
-        // Se não estiver autenticado, redirecionar para a página de login
-        if (!usuarioAutenticado) {
-            window.location.href = 'login.html';
-        }
-    </script>
 </body>
 </html>
