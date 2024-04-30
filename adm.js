@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let i = 0; i < 5; i++) {
                 const iconeAcerto = document.createElement('span');
                 iconeAcerto.classList.add('acerto'); // Adicionar classe para estilização CSS
-                if (cartao.registro && cartao.registro[i]) {
+                if (Array.isArray(cartao.registro) && cartao.registro[i]) {
                     iconeAcerto.classList.add('preenchido'); // Adicionar classe para indicar que está marcado
                     acertos++;
                 }
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             mensagemCartao.textContent = `Você ganhou um corte grátis! (${dataHora})`;
                         }
                         // Registrar a data e hora em que o ícone foi preenchido
-                        if (!cartao.registro) {
+                        if (!Array.isArray(cartao.registro)) {
                             cartao.registro = [];
                         }
                         cartao.registro[i] = getDataHoraAtual();
@@ -75,7 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         acertos--; // Decrementar o número de acertos
                         mensagemCartao.textContent = ''; // Limpar a mensagem do cartão
                         // Remover a data e hora do registro quando o ícone é desmarcado
-                        cartao.registro[i] = null;
+                        if (Array.isArray(cartao.registro)) {
+                            cartao.registro[i] = null;
+                        }
                     }
 
                     // Atualizar os acertos do cartão de fidelidade
