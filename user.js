@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const contadorVerdeCartao = document.createElement('p');
                 contadorVerdeCartao.textContent = `Número de Cortes Realizados: ${contadorVerde}`;
                 contadorVerdeCartao.style.fontWeight = 'bold';
-                contadorVerdeCartao.style.color = 'black';
+                contadorVerdeCartao.style.color = 'white';
                 cartaoItem.appendChild(contadorVerdeCartao);
 
                 // Se todos os ícones estiverem preenchidos, exibir a mensagem em negrito na cor verde
