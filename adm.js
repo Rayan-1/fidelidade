@@ -39,7 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Adicionar o nome do cliente ao cartão
             const nomeCliente = document.createElement('p');
             nomeCliente.textContent = cartao.nome; // Adicionar o nome do cliente
+            nomeCliente.style.fontWeight = 'bold';
+            nomeCliente.style.color = 'black';
             itemLista.appendChild(nomeCliente); // Adicionar o nome ao item da lista
+            
 
             // Adicionar div para os acertos
             const divAcertos = document.createElement('div');
@@ -64,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (acertos === 5) {
                             const dataHora = getDataHoraAtual(); // Obter a data e hora atuais
                             mensagemCartao.textContent = `Próximo corte é grátis! (${dataHora})`;
-                            mensagemCartao.style.color = 'black'; // Definir a cor do texto como verde
+                            mensagemCartao.style.color = 'green'; // Definir a cor do texto como verde
                             mensagemCartao.style.fontWeight = 'bold'; // Definir o peso da fonte como negrito
                         }
                         // Registrar a data e hora em que o ícone foi preenchido
@@ -101,6 +104,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Adicionar botão para excluir o cartão
             const btnExcluirCartao = document.createElement('button');
             btnExcluirCartao.textContent = 'Excluir';
+            btnExcluirCartao.style.fontWeight = 'bold';
+            btnExcluirCartao.style.borderRadius = '20px'; // Deixar os cantos do botão mais arredondados
+            btnExcluirCartao.style.padding = '10px 20px'; // Aumentar o tamanho do botão
+            btnExcluirCartao.style.fontSize = '16px'; // Ajustar o tamanho da fonte
             btnExcluirCartao.addEventListener('click', function() {
                 // Remover o cartão da lista de cartões de fidelidade
                 cartoesFidelidade.splice(index, 1);
