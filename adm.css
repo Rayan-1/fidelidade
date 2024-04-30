@@ -28,11 +28,11 @@ h1 {
 /* Estilo para cada cartão individual */
 .cartao {
     display: inline-block;
-    width: 200px;
+    width: 250px;
     height: 250px;
     background-color: #f0f0f0;
     border-radius: 10px;
-    margin: 10px;
+    margin: 15px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
