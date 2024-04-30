@@ -43,9 +43,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Salva a lista atualizada de cartões de fidelidade no armazenamento local
                 localStorage.setItem('cartoesFidelidade', JSON.stringify(cartoesFidelidade));
 
-                // Redireciona para a página do administrador (adm.html) após criar o cartão
-                //window.location.href = 'adm.html';
-                console.log = 'Cartão Criado com sucesso!';
+                // Redirecionar para a página de cartão
+                window.location.href = 'cartao.html';
+
+                // Exibir mensagem na tela
+                alert('Cartão criado com sucesso!');
+
             };
 
             // Ler o arquivo como uma URL de dados

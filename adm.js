@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     const listaCartoes = document.getElementById('lista-cartoes');
 
+    // Função para obter a data e hora atual
+    function getDataHoraAtual() {
+        const dataHora = new Date();
+        const dataFormatada = dataHora.toLocaleDateString();
+        const horaFormatada = dataHora.toLocaleTimeString();
+        return `${dataFormatada} ${horaFormatada}`;
+    }
+
     // Função para exibir os cartões na lista do administrador
     function exibirCartoes() {
         // Limpar a lista de cartões antes de exibir os cartões atualizados
@@ -49,7 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         iconeAcerto.classList.add('preenchido'); // Adicionar a classe de preenchido ao clicar
                         acertos++; // Incrementar o número de acertos
                         if (acertos === 5) {
-                            mensagemCartao.textContent = 'Você ganhou um corte grátis!';
+                            const dataHora = getDataHoraAtual(); // Obter a data e hora atuais
+                            mensagemCartao.textContent = `Você ganhou um corte grátis! (${dataHora})`;
                         }
                     } else {
                         iconeAcerto.classList.remove('preenchido'); // Remover a classe de preenchido ao desmarcar
