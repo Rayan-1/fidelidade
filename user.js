@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const nomeParagrafo = document.createElement('p');
                 nomeParagrafo.textContent = `${cartao.nome}`;
                 nomeParagrafo.style.fontWeight = 'bold';
-                nomeParagrafo.style.color = 'Blue';
+                nomeParagrafo.style.color = 'white';
                 // Adicionar o parágrafo ao cartão
                 cartaoItem.appendChild(nomeParagrafo);
                 
